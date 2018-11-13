@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css'
@@ -9,78 +9,102 @@ import Front from './components/front';
 import Back from './components/back';
 
 class App extends Component {
-  state = {
-    name: '',
-    phone: '',
-    email: '',
-    activeFront: 'none',
-    hideForm: 'block',
-    selectFront:'block',
-    selectBack:'none',
-    activeSwitch: 'none',
+    state = {
+        name: '',
+        phone: '',
+        email: '',
+        activeFront: 'none',
+        hideForm: 'block',
+        selectFront: 'block',
+        selectBack: 'none',
+        activeSwitch: 'none',
+        firstStep: true,
+        reducers: {
+            setSize: this.setSize
+        },
+        isLogin: false,
+        cardSize: 350,
+        isReversed: false
+
+    };
 
 
-  };
+    inputEmail = e => this.setState({email: e.target.value});
+    inputName = e => this.setState({name: e.target.value});
+    inputPhone = e => this.setState({phone: e.target.value});
+    setSize = e => this.setState({cardSize: e});
+    reverseColors = e => this.setState((prevState) => ({isReversed:!prevState.isReversed}));
+
+    showFront(e) {
+        e.preventDefault();
+        this.setState({activeFront: 'block', hideForm: 'none', activeSwitch: 'block'})
+    }
+
+    // showBack(e){
+    //   this.setState({activeFront: 'block', hideForm: 'none', activeSwitch: 'block'})
+
+    // }
+    selectFront = () => this.setState({firstStep: true})
+    showBack = () => this.setState({firstStep: false})
+    onLogin = (e) => {
+        e.preventDefault()
+        this.setState({isLogin: true})
+
+    }
 
 
-  inputEmail = e => this.setState({ email: e.target.value });
-  inputName = e => this.setState({ name: e.target.value });
-  inputPhone = e => this.setState({ phone: e.target.value });
-  showFront (e) {
-    e.preventDefault()
-    this.setState({activeFront: 'block', hideForm: 'none', activeSwitch: 'block'})
-  }
-  // showBack(e){
-  //   this.setState({activeFront: 'block', hideForm: 'none', activeSwitch: 'block'})
-    
-  // }
-  selectFront = () => this.setState({activeFront: 'block', selectBack: 'none'})
-  showBack = () => this.setState({activeFront: 'none', selectBack: 'block'})
-  
-  
-    
+    // handleChange = (value) => {
+    //      console.log(value)
+    //      this.setState({ checked: !this.state.checked });
+    //      // this.state({checked:true}) ? document.getElementById("card-color").style.background = 'blue' :  document.getElementById("card-color").style.background = "#2cc362"
+    //
+    // }
 
 
+    render() {
+        return (
+            <div className="App">
+                <Header/>
+
+                {this.state.isLogin ? (<Switch
+                    frontSide={this.state}
+                    showFront={this.selectFront}
+                    selectBack={this.showBack}
+                />) : (null)}
 
 
-  render() {
-    console.log(this.state.name)
-    console.log(this.state.phone)
-    console.log(this.state.email)
-    console.log(this.state.activeFront)
-    return (
-      <div className="App">
-        <Header/>
-        <Switch
-        frontSide ={this.state}
-        showFront={this.selectFront}
-        selectBack={this.showBack}
-        />
-        <Form 
-        inputEmail = {this.inputEmail}
-        inputName = {this.inputName}
-        inputPhone = {this.inputPhone}
-        frontSide ={this.state}
-        showFront={this.showFront.bind(this)}
+                {this.state.isLogin ?
 
 
-        
-        />
-        <Front
-          frontSide ={this.state}
-      
-          
-        />
-        <Back
-        frontSide ={this.state}
-        />
-     
-        
-      
-        
-      </div>
-    );
-  }
+                    this.state.firstStep
+
+
+                        ? (<Front
+                            state={this.state}
+                            setSize={this.setSize.bind(this)}
+                        />) :
+                        (<Back
+                            state={this.state}
+                            setSize={this.setSize.bind(this)}
+                            reverseColors={this.reverseColors.bind(this)}
+                        />)
+
+
+                    : (<Form
+                        inputEmail={this.inputEmail}
+                        inputName={this.inputName}
+                        inputPhone={this.inputPhone}
+                        state={this.state}
+                        // showFront={this.showFront.bind(this)}
+                        onLogin={this.onLogin.bind(this)}
+
+                    />)
+                }
+
+
+            </div>
+        );
+    }
 }
 
 export default App;

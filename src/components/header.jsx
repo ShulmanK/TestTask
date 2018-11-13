@@ -9,7 +9,7 @@ class Header extends Component {
           <nav className={"navbar navbar-light bg-success"}>
             <h2 className={"text-white pl-4"}>Testing Task for Developers</h2>
             <h2 className={"text-white pr-4"}>
-              <Clock format={"HH:mm"} ticking={true} timezone={"IST"} />
+              <Clock format={"HH:mm"} ticking={true} />
             </h2>
           </nav>
         </div>

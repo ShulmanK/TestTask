@@ -7,7 +7,6 @@ class Switch extends Component {
 
     return (
       <div className="switch"
-      style={{display: frontSide.activeSwitch}}
       >
         <div className="front mt-4">
           <div className="container">
