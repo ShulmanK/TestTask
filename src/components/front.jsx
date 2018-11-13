@@ -27,10 +27,12 @@ class Front extends Component {
             >
               <div className="row">
                 <div className="col-6">
-                  <div className="card-body style={{height:'350px'}}"
+                  <div className="card-body"
+                  style={{height:'350px'}}
                   id="front-card-size"
                   >
                     <h5 class="card-title">Your Visit Card.</h5>
+                    <div className="row ml-2 align-items-center">
                     <p className="mt-5">
                       Name: <span>{frontSide.name}</span>
                     </p>
@@ -40,6 +42,7 @@ class Front extends Component {
                     <p>
                       Email address: <span>{frontSide.email}</span>
                     </p>
+                    </div>
                   </div>
                 </div>
 
@@ -47,8 +50,9 @@ class Front extends Component {
                   <div
                     className="card-body"
                     style={{ background: "#2cc362", height: "100%" }}
+                    id="card-color"
                   >
-                    <div className="row justify-content-center mt-5">
+                    <div className="row justify-content-center mt-2">
                       <h5 class="card-title">{frontSide.name}</h5>
                     </div>
                     <div className="row justify-content-center">
