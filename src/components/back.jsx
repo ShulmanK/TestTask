@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 
 class Back extends Component {
+  hoverFront(){
+    document.getElementById("hover-back-shadow").style.boxShadow = "0px 0px 0px blue"
+  }
+  nohoverFront(){
+    document.getElementById("hover-back-shadow").style.boxShadow = "0 0 11px rgba(33,33,33,.2)"
+  }
 
   render() {
     const {frontSide} = this.props;
@@ -10,7 +16,11 @@ class Back extends Component {
       >
         <div className="row justify-content-center mt-3">
           <div className="col-6">
-            <div className="card ">
+            <div className="card"
+            id="hover-back-shadow" 
+            onMouseLeave={(e) => this.hoverFront(e)}
+            onMouseOver={(e) => this.nohoverFront(e)}
+            >
               <div className="row">
                 <div className="col-6">
                   <div className="card-body" style={{ height: "350px" }}>
