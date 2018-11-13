@@ -27,7 +27,9 @@ class Front extends Component {
             >
               <div className="row">
                 <div className="col-6">
-                  <div className="card-body style={{height:'350px'}}">
+                  <div className="card-body style={{height:'350px'}}"
+                  id="front-card-size"
+                  >
                     <h5 class="card-title">Your Visit Card.</h5>
                     <p className="mt-5">
                       Name: <span>{frontSide.name}</span>
@@ -44,7 +46,7 @@ class Front extends Component {
                 <div className="col-6">
                   <div
                     className="card-body"
-                    style={{ background: "#2cc362", height: "350px" }}
+                    style={{ background: "#2cc362", height: "100%" }}
                   >
                     <div className="row justify-content-center mt-5">
                       <h5 class="card-title">{frontSide.name}</h5>

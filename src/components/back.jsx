@@ -7,6 +7,26 @@ class Back extends Component {
   nohoverFront(){
     document.getElementById("hover-back-shadow").style.boxShadow = "0 0 11px rgba(33,33,33,.2)"
   }
+  sizeM(){
+    document.getElementById("back-card-size").style.height = "400px"
+    document.getElementById("front-card-size").style.height = "400px"
+
+    console.log('sizeM')
+  }
+  sizeS(){
+    document.getElementById("back-card-size").style.height = "350px"
+    document.getElementById("front-card-size").style.height = "350px"
+
+    console.log('sizeS')
+  }
+  sizeL(){
+    document.getElementById("back-card-size").style.height = "450px"
+    document.getElementById("front-card-size").style.height = "450px"
+
+    console.log('sizel')
+  }
+
+
 
   render() {
     const {frontSide} = this.props;
@@ -23,7 +43,9 @@ class Back extends Component {
             >
               <div className="row">
                 <div className="col-6">
-                  <div className="card-body" style={{ height: "350px" }}>
+                  <div className="card-body" style={{ height: "350px" }}
+                  id="back-card-size"
+                  >
                     <h5 className="card-title">Your Visit Card.</h5>
                     <div className="row mt-4">
                       <div className="form-check form-check-inline">
@@ -34,6 +56,8 @@ class Back extends Component {
                           id="s-choise"
                           className="ml-3"
                           defaultChecked
+                          onChange={(e) => this.sizeS(e)}
+
                         />
                         <label
                           className="form-check-label pl-2"
@@ -46,6 +70,7 @@ class Back extends Component {
                           name="size_card"
                           id="m-choise"
                           className="ml-3"
+                          onChange={(e) => this.sizeM(e)}
                         />
                         <label
                           className="form-check-label pl-2"
@@ -58,6 +83,7 @@ class Back extends Component {
                           name="size_card"
                           id="l-choise"
                           className="ml-3"
+                          onChange={(e) => this.sizeL(e)}
                         />
                         <label
                           className="form-check-label pl-2"
