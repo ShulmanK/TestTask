@@ -93,7 +93,7 @@ class Back extends Component {
                     
                    
                    <input
-                          type="checkbox"
+                          type="radio"
                           className="ml-3"
                           onClick={e => this.reverseColors(e)}
                           name="color_card"
@@ -104,7 +104,7 @@ class Back extends Component {
                     <label htmlFor="">Yes</label>
 
                      <input
-                          type="checkbox"
+                          type="radio"
                           className="ml-3"
                           onClick={e => this.noreverseColors(e)}
                           name="color_card"
