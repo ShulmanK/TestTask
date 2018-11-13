@@ -48,7 +48,7 @@ class Front extends Component {
 
                 <div className="col-6">
                   <div
-                    className="card-body"
+                    className="card-body "
                     style={{ background: "#2cc362", height: "100%" }}
                     id="card-color"
                   >

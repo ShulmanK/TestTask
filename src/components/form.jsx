@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 
 class Form extends Component {
+
+  
   render() {
     const { inputEmail, inputName, inputPhone, frontSide , showFront} = this.props;
    
@@ -17,7 +19,9 @@ class Form extends Component {
                   <h5 className={"card-title text-left"}>
                     Visit Card Creation Form
                   </h5>
-                  <form >
+                  <form  
+                  onSubmit={showFront}
+                  >
                     <div className={"form-group mt-4 text-left"}>
                       <label for="form_name">Name:</label>
                       <input
@@ -58,6 +62,17 @@ class Form extends Component {
 
                     <div className={"form-group text-left"}>
 
+                    <button  type="submit" class="btn btn-success align-left"
+                      disabled={!frontSide.email ||  !frontSide.name || !frontSide.phone  }
+                     
+                      // onClick={showFront}
+                      
+
+                      
+                      >
+                        SEND
+                      </button>
+
                     
                      
                       
@@ -65,15 +80,7 @@ class Form extends Component {
 
                     </div>
                   </form>
-                  <button class="btn btn-success align-left"
-                      disabled={!frontSide.email ||  !frontSide.name || !frontSide.phone  }
-                     
-                      onClick={showFront}
-
-                      
-                      >
-                        SEND
-                      </button>
+                  
                   
 
                   

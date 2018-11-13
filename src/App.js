@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-// import './App.css';
+import './App.css';
 import 'bootstrap/dist/css/bootstrap.css'
 import Header from './components/header';
 import Form from './components/form';
@@ -17,7 +17,8 @@ class App extends Component {
     hideForm: 'block',
     selectFront:'block',
     selectBack:'none',
-    activeSwitch: 'none'
+    activeSwitch: 'none',
+
 
   };
 
@@ -25,7 +26,14 @@ class App extends Component {
   inputEmail = e => this.setState({ email: e.target.value });
   inputName = e => this.setState({ name: e.target.value });
   inputPhone = e => this.setState({ phone: e.target.value });
-  showFront = () => this.setState({activeFront: 'block', hideForm: 'none', activeSwitch: 'block'})
+  showFront (e) {
+    e.preventDefault()
+    this.setState({activeFront: 'block', hideForm: 'none', activeSwitch: 'block'})
+  }
+  // showBack(e){
+  //   this.setState({activeFront: 'block', hideForm: 'none', activeSwitch: 'block'})
+    
+  // }
   selectFront = () => this.setState({activeFront: 'block', selectBack: 'none'})
   showBack = () => this.setState({activeFront: 'none', selectBack: 'block'})
   
@@ -53,7 +61,7 @@ class App extends Component {
         inputName = {this.inputName}
         inputPhone = {this.inputPhone}
         frontSide ={this.state}
-        showFront={this.showFront}
+        showFront={this.showFront.bind(this)}
 
 
         

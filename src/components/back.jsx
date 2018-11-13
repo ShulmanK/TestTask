@@ -1,6 +1,27 @@
 import React, { Component } from "react";
+import Switch from "react-switch";
 
 class Back extends Component {
+  state = {
+    checked: false
+  };
+
+  // handleChange(e) {
+  //   this.bind.setState({ checked: 'checked' });
+  //   e.preventDefault();
+
+  // }
+  handleChange = (value) => {
+    console.log(value)
+    this.setState({ checked: !this.state.checked });
+    // this.state({checked:true}) ? document.getElementById("card-color").style.background = 'blue' :  document.getElementById("card-color").style.background = "#2cc362"
+
+  }
+
+
+  // inputEmail = e => this.setState({ email: e.target.value });
+
+
   hoverFront() {
     document.getElementById("hover-back-shadow").style.boxShadow =
       "0px 0px 0px blue";
@@ -27,11 +48,11 @@ class Back extends Component {
 
     console.log("sizel");
   }
-  reverseColors(){
+  reverseColors() {
     document.getElementById("card-color").style.background = "blue";
   }
-  noreverseColors(){
-    document.getElementById("card-color").style.background = "#2cc362"
+  noreverseColors() {
+    document.getElementById("card-color").style.background = "#2cc362";
   }
 
   render() {
@@ -89,31 +110,51 @@ class Back extends Component {
                     </div>
 
                     <div className="row">
-                    <span className="pl-3 mt-3">Reverse colors:
-                    
-                   
-                   <input
+                      <span className="pl-3 mt-3">
+                        Reverse colors:
+                        <input
                           type="radio"
                           className="ml-3"
                           onClick={e => this.reverseColors(e)}
                           name="color_card"
-                          defaultChecked
                           
-                        
                         />
-                    <label htmlFor="">Yes</label>
-
-                     <input
+                        <label htmlFor="">Yes</label>
+                        <input
                           type="radio"
                           className="ml-3"
                           onClick={e => this.noreverseColors(e)}
                           name="color_card"
-                        
+                          defaultChecked  
                         />
-                    <label htmlFor="">No</label>
-                    
-                    </span>
-                    
+                        <label htmlFor="">No</label>
+                      </span>
+                    </div>
+
+                    <div className="row">
+                      <span>Example</span>
+
+                      <label htmlFor="material-switch">
+                        <span>
+                          Switch with style inspired by Material Design
+                        </span>
+                        <Switch
+                          
+                          onChange={this.handleChange}
+                          checked={this.state.checked}
+                          onColor="#86d3ff"
+                          onHandleColor="#2693e6"
+                          handleDiameter={30}
+                          uncheckedIcon={false}
+                          checkedIcon={false}
+                          boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+                          activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
+                          height={20}
+                          width={48}
+                          className="react-switch"
+                          id="material-switch"
+                        />
+                      </label>
                     </div>
                   </div>
                 </div>
