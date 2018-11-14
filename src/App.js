@@ -19,89 +19,51 @@ class App extends Component {
         selectBack: 'none',
         activeSwitch: 'none',
         firstStep: true,
-        reducers: {
-            setSize: this.setSize
-        },
         isLogin: false,
         cardSize: 350,
         isReversed: false
-
     };
-
-
     inputEmail = e => this.setState({email: e.target.value});
     inputName = e => this.setState({name: e.target.value});
     inputPhone = e => this.setState({phone: e.target.value});
     setSize = e => this.setState({cardSize: e});
     reverseColors = e => this.setState((prevState) => ({isReversed:!prevState.isReversed}));
-
     showFront(e) {
         e.preventDefault();
         this.setState({activeFront: 'block', hideForm: 'none', activeSwitch: 'block'})
     }
-
-    // showBack(e){
-    //   this.setState({activeFront: 'block', hideForm: 'none', activeSwitch: 'block'})
-
-    // }
     selectFront = () => this.setState({firstStep: true})
     showBack = () => this.setState({firstStep: false})
     onLogin = (e) => {
         e.preventDefault()
         this.setState({isLogin: true})
-
     }
-
-
-    // handleChange = (value) => {
-    //      console.log(value)
-    //      this.setState({ checked: !this.state.checked });
-    //      // this.state({checked:true}) ? document.getElementById("card-color").style.background = 'blue' :  document.getElementById("card-color").style.background = "#2cc362"
-    //
-    // }
-
-
     render() {
         return (
             <div className="App">
                 <Header/>
-
                 {this.state.isLogin ? (<Switch
                     frontSide={this.state}
                     showFront={this.selectFront}
-                    selectBack={this.showBack}
-                />) : (null)}
-
-
-                {this.state.isLogin ?
-
-
-                    this.state.firstStep
-
-
-                        ? (<Front
-                            state={this.state}
-                            setSize={this.setSize.bind(this)}
-                        />) :
-                        (<Back
-                            state={this.state}
-                            setSize={this.setSize.bind(this)}
-                            reverseColors={this.reverseColors.bind(this)}
-                        />)
-
-
-                    : (<Form
-                        inputEmail={this.inputEmail}
-                        inputName={this.inputName}
-                        inputPhone={this.inputPhone}
-                        state={this.state}
-                        // showFront={this.showFront.bind(this)}
-                        onLogin={this.onLogin.bind(this)}
-
-                    />)
+                    selectBack={this.showBack}/>) : (null)}
+                {this.state.isLogin ? this.state.firstStep ? 
+                (<Front
+                    state={this.state}
+                    setSize={this.setSize.bind(this)}
+                />) :
+                (<Back
+                    state={this.state}
+                    setSize={this.setSize.bind(this)}
+                    reverseColors={this.reverseColors.bind(this)}
+                />) : 
+                (<Form
+                    inputEmail={this.inputEmail}
+                    inputName={this.inputName}
+                    inputPhone={this.inputPhone}
+                    state={this.state}
+                    onLogin={this.onLogin.bind(this)}
+                 />)
                 }
-
-
             </div>
         );
     }
