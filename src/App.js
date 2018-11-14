@@ -16,11 +16,6 @@ class App extends Component {
         name: '',
         phone: '',
         email: '',
-        activeFront: 'none',
-        hideForm: 'block',
-        selectFront: 'block',
-        selectBack: 'none',
-        activeSwitch: 'none',
         firstStep: true,
         isLogin: false,
         cardSize: 350,
@@ -36,9 +31,9 @@ class App extends Component {
     onLogin = (e) => {
         e.preventDefault()
         this.setState({isLogin: true}) 
-        axios.post('http://localhost/8090/visit', {state: this.state});
-            axios.post('http://localhost/8090/visit', {name: this.state.name, phone: this.state.phone, email: this.state.email}).then((answer) => this.setState({isLogin: true})).catch(e => e)
+        axios.post('http://localhost/8090/visit', {name: this.state.name, phone: this.state.phone, email: this.state.email}).then((answer) => this.setState({isLogin: true})).catch(e => e)
         }
+
 
 
     render() {
