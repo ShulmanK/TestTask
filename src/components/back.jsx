@@ -2,11 +2,6 @@ import React, { Component } from "react";
 import Switch from "react-switch";
 
 class Back extends Component {
-  handleChange = value => {
-    console.log(value);
-    this.setState({ checked: !this.state.checked });
-  };
-  setSize(size) {}
   render() {
     const { state, setSize, reverseColors } = this.props;
     return (
