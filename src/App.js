@@ -7,6 +7,9 @@ import Form from './components/form';
 import Switch from './components/switch';
 import Front from './components/front';
 import Back from './components/back';
+import axios from 'axios';
+
+
 
 class App extends Component {
     state = {
@@ -28,22 +31,20 @@ class App extends Component {
     inputPhone = e => this.setState({phone: e.target.value});
     setSize = e => this.setState({cardSize: e});
     reverseColors = e => this.setState((prevState) => ({isReversed:!prevState.isReversed}));
-    showFront(e) {
-        e.preventDefault();
-        this.setState({activeFront: 'block', hideForm: 'none', activeSwitch: 'block'})
-    }
     selectFront = () => this.setState({firstStep: true})
     showBack = () => this.setState({firstStep: false})
     onLogin = (e) => {
         e.preventDefault()
-        this.setState({isLogin: true})
+        this.setState({isLogin: true}) 
+        axios.post('http://localhost/8090/visit', {state: this.state})
     }
+
+
     render() {
         return (
             <div className="App">
                 <Header/>
                 {this.state.isLogin ? (<Switch
-                    frontSide={this.state}
                     showFront={this.selectFront}
                     selectBack={this.showBack}/>) : (null)}
                 {this.state.isLogin ? this.state.firstStep ? 

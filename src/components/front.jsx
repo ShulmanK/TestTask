@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import CompanyImage from "../images/group.png";
 
 class Front extends Component {
-  state = {
-    activeFront: "none"
-  };
   render() {
     const { state } = this.props;
     return (

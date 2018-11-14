@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 
+
 class Form extends Component {
   render() {
     const { inputEmail, inputName, inputPhone, state, onLogin } = this.props;
+    
     return (
       <div>
         <div className={"form mt-5"}>
@@ -13,7 +15,9 @@ class Form extends Component {
                   <h5 className={"card-title text-left"}>
                     Visit Card Creation Form
                   </h5>
-                  <form onSubmit={onLogin}>
+                  <form 
+                  onSubmit={onLogin}
+                  method='POST'>
                     <div className={"form-group mt-4 text-left"}>
                       <label htmlFor={"form_name"}>Name:</label>
                       <input

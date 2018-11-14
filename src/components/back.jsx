@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import Switch from "react-switch";
 
 class Back extends Component {
-  state = {
-    checked: false
-  };
   handleChange = value => {
     console.log(value);
     this.setState({ checked: !this.state.checked });
